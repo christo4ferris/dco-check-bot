@@ -1,0 +1,19 @@
+{
+  "name": "dco-check-bot",
+  "version": "1.0.0",
+  "description": "bot that checks for dco sign-off",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christo4ferris/dco-check-bot.git"
+  },
+  "author": "Christopher Ferris",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/christo4ferris/dco-check-bot/issues"
+  },
+  "homepage": "https://github.com/christo4ferris/dco-check-bot#readme"
+}
