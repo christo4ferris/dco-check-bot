@@ -1,4 +1,4 @@
-// 
+//
 var http = require('http');
 var createHandler = require('github-webhook-handler');
 var handler = createHandler({ path: '/webhook', secret: 'sekrit' });
@@ -24,5 +24,7 @@ handler.on('pull_request', function (event) {
     event.payload.action,
     event.payload.repository.name,
     event.payload.pull_request.number);
-  console.log('event.payload.pull_request.body');
+  if (event.payload.pull_request.body.search(/Signed-off-by:/) > -1) {
+    console.log(event.payload.pull_request.body);
+  }
 });
