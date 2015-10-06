@@ -18,25 +18,10 @@ handler.on('error', function (err) {
   console.error('Error:', err.message);
 });
 
-handler.on('opened', function (event) {
-  console.log('Received an opened pull_request event for %s PR #%s',
+handler.on('pull_request', function (event) {
+  console.log('Received an %s pull_request event for %s PR #%s',
+    event.payload.action,
     event.payload.repository.name,
     event.payload.pull_request.number);
   console.log('event.payload.pull_request.body');
-});
-
-handler.on('issues', function (event) {
-  console.log('Received an issue event for %s action=%s: #%d %s',
-    event.payload.repository.name,
-    event.payload.action,
-    event.payload.issue.number,
-    event.payload.issue.title);
-});
-
-handler.on('issue_comment', function (event) {
-  console.log('Received an issue comment event for %s action=%s: #%d %s',
-    event.payload.repository.name,
-    event.payload.action,
-    event.payload.issue.number,
-    event.payload.issue.title);
 });
