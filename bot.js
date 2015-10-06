@@ -14,35 +14,14 @@ http.createServer(function (req, res) {
   });
 }).listen(port, host);
 
-handler.on('*', function (event) {
-  console.log('Received an %s event for %s to %s',
-    event.payload.action,
-    event.payload.repository.name,
-    event.payload.ref);
-});
-
 handler.on('error', function (err) {
   console.error('Error:', err.message);
 });
 
-handler.on('push', function (event) {
-  console.log('Received a push event for %s to %s',
-    event.payload.repository.name,
-    event.payload.ref);
-});
-
-handler.on('issues', function (event) {
-  console.log('Received an issue event for %s action=%s: #%d %s',
-    event.payload.repository.name,
+handler.on('pull_request', function (event) {
+  console.log('Received an %s pull_request event for %s PR #%s',
     event.payload.action,
-    event.payload.issue.number,
-    event.payload.issue.title);
-});
-
-handler.on('issue_comment', function (event) {
-  console.log('Received an issue comment event for %s action=%s: #%d %s',
     event.payload.repository.name,
-    event.payload.action,
-    event.payload.issue.number,
-    event.payload.issue.title);
+    event.payload.pull_request.number);
+  console.log('event.payload.pull_request.body');
 });
