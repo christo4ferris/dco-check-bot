@@ -14,21 +14,15 @@ http.createServer(function (req, res) {
   });
 }).listen(port, host);
 
-handler.on('*', function (event) {
-  console.log('Received an %s event for %s to %s',
-    event.payload.action,
-    event.payload.repository.name,
-    event.payload.ref);
-});
-
 handler.on('error', function (err) {
   console.error('Error:', err.message);
 });
 
-handler.on('push', function (event) {
-  console.log('Received a push event for %s to %s',
+handler.on('opened', function (event) {
+  console.log('Received an opened pull_request event for %s PR #%s',
     event.payload.repository.name,
-    event.payload.ref);
+    event.payload.pull_request.number);
+  console.log('event.payload.pull_request.body');
 });
 
 handler.on('issues', function (event) {
