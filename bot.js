@@ -9,10 +9,17 @@ http.createServer(function (req, res) {
     res.statusCode = 404
     res.end('no such location')
   })
-}).listen(port)
+}).listen(port, host)
 
 handler.on('error', function (err) {
   console.error('Error:', err.message)
+})
+
+handler.on('*', function (event) {
+  console.log('Received an %s event for %s to %s',
+    event.payload.action,
+    event.payload.repository.name,
+    event.payload.ref)
 })
 
 handler.on('push', function (event) {
