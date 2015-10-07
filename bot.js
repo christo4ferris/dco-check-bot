@@ -75,7 +75,7 @@ handler.on('pull_request', function (event) {
     event.payload.action,
     event.payload.repository.name,
     event.payload.pull_request.number);
-  if (event.payload.pull_request.body.search(/Signed-off-by:.*<.*@.*>/) > -1) {
+  if (event.payload.pull_request.body.search(/DCO1.1 Signed-off-by:.*<.*@.*>/) > -1) {
     postComment(
       event.payload,
       doc_found);
