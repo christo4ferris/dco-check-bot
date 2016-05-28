@@ -1,0 +1,10 @@
+module.exports = {
+  'auth': {
+    'clientid': 'dco-bot',
+    'secret': 'shhhImhuntingwabbit'
+  }
+  'webhook': {
+    'path: '/webhook',
+    'secret': 'itsasecret'
+  }
+};

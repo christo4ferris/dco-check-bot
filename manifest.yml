@@ -5,5 +5,5 @@ applications:
   command: node bot.js
   path: .
   domain: mybluemix.net
-  instances: 1
+  instances: 2
   memory: 64M
