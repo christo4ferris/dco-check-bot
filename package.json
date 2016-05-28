@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/christo4ferris/dco-check-bot/issues"
   },
-  "homepage": "https://github.com/christo4ferris/dco-check-bot#readme"
+  "homepage": "https://github.com/christo4ferris/dco-check-bot#readme",
+  "dependencies": {
+    "github-webhook-handler": "^0.5.0"
+  }
 }

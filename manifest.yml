@@ -1,9 +1,9 @@
 applications:
 - disk_quota: 1024M
-  host: dco-bot
-  name: dco-bot
+  host: dco-bot2
+  name: dco-bot2
   command: node bot.js
   path: .
   domain: mybluemix.net
-  instances: 1
+  instances: 2
   memory: 64M

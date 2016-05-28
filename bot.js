@@ -4,7 +4,8 @@ var http = require('http');
 var url = require('url');
 var config = require('./config.js')
 var createHandler = require('github-webhook-handler');
-var handler = createHandler({ path: '/webhook', secret: 't34B6EKaUgyw' });
+var checkDCO = require('./src/checkDCO');
+var handler = createHandler(config.webhook);
 var host = (process.env.VCAP_APP_HOST || 'localhost');
 var port = (process.env.VCAP_APP_PORT || 7777);
 var dco_not_found = '\n\nPlease add a comment with a DCO1.1 Signed-off-by statement in order to allow us to process your pull request.';
@@ -12,6 +13,7 @@ var doc_found = '\n\nI can confirm that the DCO1.1 sign-off has been included. I
 var greeting = 'Hi ';
 var thanks = ',\n\nThanks for submitting this pull request!';
 var signature = '\n\ndco-bot';
+
 function postComment(payload, msg) {
   var tmp = {};
   tmp.body = greeting + payload.pull_request.user.login + thanks + msg + signature;
@@ -53,6 +55,7 @@ function postComment(payload, msg) {
   req.write(postData);
   req.end();
 }
+
 // Start server
 http.createServer(function (req, res) {
   handler(req, res, function (err) {
@@ -75,7 +78,7 @@ handler.on('pull_request', function (event) {
     event.payload.action,
     event.payload.repository.name,
     event.payload.pull_request.number);
-  if (event.payload.pull_request.body.search(/DCO1.1 Signed-off-by:.*<.*@.*>/) > -1) {
+  if (checkDCO(event.payload.pull_request.body)) {
     postComment(
       event.payload,
       doc_found);
