@@ -9,6 +9,8 @@ var handler = createHandler(config.webhook);
 var host = (process.env.VCAP_APP_HOST || 'localhost');
 var port = (process.env.VCAP_APP_PORT || 7777);
 var dco_not_found = '\n\nPlease add a comment with a DCO1.1 Signed-off-by statement in order to allow us to process your pull request.';
+var dnf_tail1 ='\n\nFor example a comment like this: "DCO1.1 Signed-off-by: John James <john.james@dcomail.com>"';
+var dnf_tail2 ='\n\nEnsure you supply a valid e-mail with the comment';
 var doc_found = '\n\nI can confirm that the DCO1.1 sign-off has been included. It is okay to process this pull request.';
 var greeting = 'Hi ';
 var thanks = ',\n\nThanks for submitting this pull request!';
@@ -86,6 +88,6 @@ handler.on('pull_request', function (event) {
   else {
     postComment(
       event.payload,
-      dco_not_found)
+      dco_not_found+dnf_tail1+dnf_tail2);
   }
 });
