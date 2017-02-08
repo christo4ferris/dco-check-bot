@@ -1,5 +1,5 @@
 # dco-check-bot
-A webhook that checks for valid DCO1.1 sign-off in a pull request.
+A simple webhook that checks for valid DCO1.1 sign-off in a pull request. 
 
 *Note: if you wish to add a repository to the dco-bot already deployed, [contact me](mailto:chrisfer@us.ibm.com) for the secret key.*
 
