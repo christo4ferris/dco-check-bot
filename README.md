@@ -1,3 +1,5 @@
+# **NOTE**: GitHub now has a more formal approach to integrating a DCO status check on a PR. I strongly recommend that you use [that integration](https://github.com/apps/dco), instead.
+
 # dco-check-bot
 A simple webhook that checks for valid DCO1.1 sign-off in a pull request. 
 
